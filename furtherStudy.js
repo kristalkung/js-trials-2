@@ -58,7 +58,7 @@ function kidsGame(names) {
     if (!firstLetterToWords[firstChar]) {
       firstLetterToWords[firstChar] = [name];
     } else {
-      firstLetterToWords[firstChar] += [name];
+      firstLetterToWords[firstChar].push(name);
     }
   }
 
@@ -70,10 +70,40 @@ function kidsGame(names) {
         firstLetterToWords[lastWordChar].length === 0) {
       break;
     }
-    else {
-      const nextWord = firstLetterToWords[lastWordChar].shift();
-      output.push(nextWord);
-    }
+    
+    const nextWord = firstLetterToWords[lastWordChar].shift();
+    output.push(nextWord);
+    
   }
   return output;
 }
+
+// function kidsGame(names) {
+//   const output = [names.shift()];
+
+//   const firstLetterToWords = {};
+
+//   for (const name of names) {
+//     const firstChar = name[0];
+//     if (!firstLetterToWords[firstChar]) {
+//       firstLetterToWords[firstChar] = [name];
+//     } else {
+//       firstLetterToWords[firstChar].push(name);
+//     }
+//   }
+
+//   while (true) {
+//     const lastWord = output[output.length - 1];
+//     const lastWordChar = lastWord[lastWord.length - 1];
+
+//     if (firstLetterToWords[lastWordChar] === undefined ||
+//         firstLetterToWords[lastWordChar].length === 0) {
+//       break;
+//     }
+
+//     const nextWord = firstLetterToWords[lastWordChar].shift();
+//     output.push(nextWord);
+//   }
+
+//   return output;
+// }
